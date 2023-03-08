@@ -1,8 +1,8 @@
-const initialState = [{
+const initialState = {
     themeName: '',
-    primaryColor: '#000',
-    secondaryColor: "#fff"
-}]
+    primaryColor: '',
+    secondaryColor: ''
+}
 
 const ColorChangeReducer = (state = initialState, action) => {
     if (action.type === 'THEME_NAME') {
@@ -18,6 +18,12 @@ const ColorChangeReducer = (state = initialState, action) => {
         }
     }
     else if (action.type === 'SECONDARY_COLOR') {
+        return {
+            ...state,
+            ...action.payload
+        }
+    }
+    else if (action.type === 'SET_DEFAULT') {
         return {
             ...state,
             ...action.payload

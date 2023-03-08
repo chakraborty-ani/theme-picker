@@ -20,45 +20,46 @@ const Header = () => {
         }
     }, [location.pathname])
     return (
-        <nav className='navbar' style={{ backgroundColor: `${style.backgroundColor}` }}>
-            <motion.span
-                initial={{ x: '-100vw' }}
-                animate={{ x: 0 }}
-                transition={{ delay: 0.2, type: 'spring', stiffness: 85 }}
-                whileHover={{ textShadow: "0px 0px 8px rgb(211,211,211)" }}>
-                <Link
-                    className='navbar-brand'
-                    to='/'
-                    style={{ color: `${style.color}` }}>
-                    ThemePicker
-                </Link>
-            </motion.span>
-            <motion.ul className='navbar-menu'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2, duration: 1.5 }}>
-                <motion.li className='navbar-item'
-                    whileHover={{ borderBottom: `1px solid ${style.color}` }}>
+        <>
+            <nav className='navbar' style={{ backgroundColor: `${style.backgroundColor}` }}>
+                <motion.span
+                    initial={{ x: '-100vw' }}
+                    animate={{ x: 0 }}
+                    transition={{ delay: 0.2, type: 'spring', stiffness: 85 }}
+                    whileHover={{ textShadow: "0px 0px 8px rgb(211,211,211)" }}>
                     <Link
-                        className={`navbar-link ${homeActive ? "active" : ""}`}
+                        className='navbar-brand'
                         to='/'
                         style={{ color: `${style.color}` }}>
-                        Home
+                        ThemePicker
                     </Link>
-                </motion.li>
-                <motion.li className='navbar-item'
-                    whileHover={{ borderBottom: `1px solid ${style.color}` }}>
-                    <Link
-                        className={`navbar-link ${routeActive ? "active" : ""}`}
-                        to='/theme-list'
-                        style={{ color: `${style.color}` }}>
-                        Themes
-                    </Link>
-                </motion.li>
-            </motion.ul>
-
-
-        </nav>
+                </motion.span>
+                <motion.ul className='navbar-menu'
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 1.5 }}>
+                    <motion.li className='navbar-item'
+                        whileHover={{ borderBottom: `1px solid ${style.color}` }}>
+                        <Link
+                            className={`navbar-link ${homeActive ? "active" : ""}`}
+                            to='/'
+                            style={{ color: `${style.color}` }}>
+                            Home
+                        </Link>
+                    </motion.li>
+                    <motion.li className='navbar-item'
+                        whileHover={{ borderBottom: `1px solid ${style.color}` }}>
+                        <Link
+                            className={`navbar-link ${routeActive ? "active" : ""}`}
+                            to='/theme-list'
+                            style={{ color: `${style.color}` }}>
+                            Themes
+                        </Link>
+                    </motion.li>
+                </motion.ul>
+            </nav>
+            <hr style={{ border: `1px solid ${style.color}` }} />
+        </>
     )
 }
 

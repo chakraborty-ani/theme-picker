@@ -1,0 +1,45 @@
+#table-container {
+    min-height: 100vh;
+}
+
+.table {
+    margin: auto;
+    width: 75%;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 8px 15px;
+}
+
+.cell {
+    height: 35px;
+    width: 25%;
+    border-radius: 5px;
+}
+
+.cell-name {
+    width: 15%;
+}
+
+.cell-head {
+    padding: 0 10px 10px 10px;
+}
+
+.apply-btn {
+    /* margin-left: 10px; */
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 576px) {
+    .table {
+        width: 92%;
+        font-size: 0.65rem;
+    }
+
+    .apply-btn {
+        font-size: 0.65rem;
+    }
+
+}

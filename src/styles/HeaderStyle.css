@@ -36,6 +36,10 @@
     font-size: 1.5rem;
 }
 
+hr {
+    margin: 0;
+}
+
 @media screen and (max-width: 576px) {
 
     .navbar {

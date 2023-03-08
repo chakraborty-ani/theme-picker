@@ -6,7 +6,7 @@ export const darkTheme = () => {
     return {
         type: DARK,
         payload: {
-            color: '#fff',
+            color: '#f5f5fa',
             backgroundColor: "#1f1717"
         }
     }
@@ -16,7 +16,7 @@ export const lightTheme = () => {
     return {
         type: LIGHT,
         payload: {
-            color: '#000',
+            color: '#1f1717',
             backgroundColor: "#f5f5fa"
         }
     }

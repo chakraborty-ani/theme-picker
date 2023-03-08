@@ -3,6 +3,7 @@
 .container {
     padding: 3rem 0;
     font-family: 'Poppins', sans-serif;
+    height: auto;
 }
 
 .form-box {
@@ -32,6 +33,15 @@ input {
     font-size: 1.1rem;
 }
 
+.palette {
+    display: flex;
+    justify-content: right;
+}
+
+#themeNameInput {
+    width: 100%;
+}
+
 .color-input {
     display: flex;
     justify-content: space-between;
@@ -39,6 +49,7 @@ input {
 }
 
 .choose-btn {
+    font-family: 'Poppins', sans-serif;
     width: 45%;
     padding: 10px 0;
     border-radius: 5px;
@@ -46,13 +57,19 @@ input {
 }
 
 #submit-btn {
+    font-family: 'Poppins', sans-serif;
     margin-top: 20px;
     width: 100%;
     padding: 10px 0;
     border-radius: 5px;
+    margin: 2rem 0 2.5rem 0;
 }
 
 @media screen and (max-width: 576px) {
+    .container {
+        min-height: 100vh;
+    }
+
     .form-box {
         border-radius: 10px;
         max-width: 68%;

@@ -4,18 +4,30 @@ import { darkTheme, lightTheme, otherTheme } from '../redux/actions/ThemesAction
 import { motion } from 'framer-motion';
 import '../styles/ThemeList.css';
 
+const containerVariants = {
+    start: {
+        opacity: 0
+    },
+    end: {
+        opacity: 1,
+        transition: { ease: 'easeInOut', duration: 1.5 }
+    }
+}
+
 const ThemeList = () => {
 
     const dispatch = useDispatch();
     const style = useSelector(state => state.ThemeChangeReducer);
     const themes = useSelector(state => state.AddThemeReducer);
 
+    console.log(themes);
+
     return (
         <div className='container' id='table-container' style={style}>
             <motion.table className='table'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ ease: 'easeInOut', duration: 1.5 }}>
+                variants={containerVariants}
+                initial="start"
+                animate="end">
                 <thead >
                     <tr className='row'>
                         <th className='cell cell-head cell-name'>Name</th>

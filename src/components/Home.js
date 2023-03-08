@@ -3,10 +3,30 @@ import { useFormik } from 'formik';
 import { SketchPicker } from 'react-color';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import { otherTheme } from '../redux/actions/ThemesAction';
 import { setPrimaryColor, setSecondaryColor, setThemeName, setdefault } from '../redux/actions/ColorsAction';
 import { addTheme } from '../redux/actions/ThemesListAction';
 import '../styles/Home.css';
+
+const containerVariants = {
+    start: {
+        opacity: 0
+    },
+    end: {
+        opacity: 1,
+        transition: { ease: 'easeInOut', duration: 1.5 }
+    }
+}
+
+const buttonVariants = {
+    hover: {
+        scale: 1.05,
+        transition: {
+            duration: 0.4
+        }
+    }
+}
 
 const Home = () => {
 
@@ -42,6 +62,16 @@ const Home = () => {
             dispatch(otherTheme(customThemes.length - 1));
             dispatch(addTheme(values));
             dispatch(setdefault());
+            toast.success('Theme added and applied!', {
+                position: "bottom-left",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+            })
         }
     });
 
@@ -58,9 +88,9 @@ const Home = () => {
         <div className='container' style={style}>
             <motion.div className='form-box'
                 style={{ ...style, border: `1px solid ${style.color}` }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ ease: 'easeInOut', duration: 1.5 }}>
+                variants={containerVariants}
+                initial="start"
+                animate="end">
                 <h2 id='form-heading'>Enter theme details</h2>
                 <form onSubmit={formik.handleSubmit}>
                     <div>
@@ -131,14 +161,16 @@ const Home = () => {
                                 />
                             </span>
                         )}
-                        <button type='submit' id='submit-btn'
+                        <motion.button type='submit' id='submit-btn'
                             style={{
                                 backgroundColor: `${style.color}`,
                                 color: `${style.backgroundColor}`,
                                 border: `1px solid ${style.color}`
-                            }}>
+                            }}
+                            variants={buttonVariants}
+                            whileHover="hover">
                             Submit
-                        </button>
+                        </motion.button>
                     </div>
                 </form>
             </motion.div>

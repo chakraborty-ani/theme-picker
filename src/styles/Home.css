@@ -63,6 +63,13 @@ input {
     cursor: pointer;
 }
 
+.error-div {
+    margin-top: -5px;
+    padding-bottom: 15px;
+    font-size: 0.65rem;
+    font-style: italic;
+}
+
 #submit-btn {
     font-family: 'Poppins', sans-serif;
     margin-top: 20px;

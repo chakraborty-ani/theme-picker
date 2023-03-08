@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { SketchPicker } from 'react-color';
 import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
@@ -15,7 +16,7 @@ const containerVariants = {
     },
     end: {
         opacity: 1,
-        transition: { ease: 'easeInOut', duration: 1.5 }
+        transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
     }
 }
 
@@ -51,11 +52,20 @@ const Home = () => {
         secondaryHexCode: themeProperties.secondaryColor
     }
 
+    const FORM_VALIDATION_SCHEMA = Yup.object().shape({
+        themeName: Yup.string()
+            .required('Theme name is required'),
+        primaryHexCode: Yup.string()
+            .required('Primary color is required'),
+        secondaryHexCode: Yup.string()
+            .required('Secondary color is required')
+    })
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: INITIAL_VALUES,
+        validationSchema: FORM_VALIDATION_SCHEMA,
         onSubmit: (values) => {
-            // console.log(values)
             let customThemes = JSON.parse(localStorage.getItem("customThemes"));
             customThemes.push(values);
             localStorage.setItem("customThemes", JSON.stringify(customThemes));
@@ -83,7 +93,7 @@ const Home = () => {
     const handleSecondaryColorChange = (color) => {
         dispatch(setSecondaryColor(color));
     }
-    // border: `1px solid ${style.color}`
+
     return (
         <div className='container' style={style}>
             <motion.div className='form-box'
@@ -103,6 +113,9 @@ const Home = () => {
                             onChange={formik.handleChange}
                             style={{ border: `1px solid ${style.color}` }}
                         />
+                        {formik.errors.themeName && formik.touched.themeName ? (
+                            <div className='error-div'>{formik.errors.themeName}</div>
+                        ) : null}
                         <label htmlFor='primaryHexCodeInput'>Primary Color </label>
                         <div className='color-input'>
                             <input
@@ -124,6 +137,9 @@ const Home = () => {
                                 {!primaryPaletteOpen ? `Open Palette` : `Close Palette`}
                             </button>
                         </div>
+                        {formik.errors.primaryHexCode && formik.touched.primaryHexCode ? (
+                            <div className='error-div'>{formik.errors.primaryHexCode}</div>
+                        ) : null}
                         {primaryPaletteOpen && (
                             <span className='palette'>
                                 <SketchPicker
@@ -153,6 +169,9 @@ const Home = () => {
                                 {!secondaryPaletteOpen ? `Open Palette` : `Close Palette`}
                             </button>
                         </div>
+                        {formik.errors.secondaryHexCode && formik.touched.secondaryHexCode ? (
+                            <div className='error-div'>{formik.errors.secondaryHexCode}</div>
+                        ) : null}
                         {secondaryPaletteOpen && (
                             <span className='palette'>
                                 <SketchPicker

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { darkTheme, lightTheme, otherTheme } from '../redux/actions/ThemesAction';
+import { darkTheme, lightTheme, otherTheme, natureTheme, oceanTheme } from '../redux/actions/ThemesAction';
 import { motion } from 'framer-motion';
 import '../styles/ThemeList.css';
 
@@ -10,7 +10,7 @@ const containerVariants = {
     },
     end: {
         opacity: 1,
-        transition: { ease: 'easeInOut', duration: 1.5 }
+        transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
     }
 }
 
@@ -19,8 +19,6 @@ const ThemeList = () => {
     const dispatch = useDispatch();
     const style = useSelector(state => state.ThemeChangeReducer);
     const themes = useSelector(state => state.AddThemeReducer);
-
-    console.log(themes);
 
     return (
         <div className='container' id='table-container' style={style}>
@@ -59,6 +57,38 @@ const ThemeList = () => {
                         <td className='cell' style={{ backgroundColor: '#f5f5fa', color: '#1f1717' }}>#f5f5fa</td>
                         <td className='cell'>
                             <button onClick={() => dispatch(darkTheme())}
+                                className='apply-btn'
+                                style={{
+                                    backgroundColor: `${style.color}`,
+                                    color: `${style.backgroundColor}`,
+                                    border: `1px solid ${style.color}`
+                                }}>
+                                Apply
+                            </button>
+                        </td>
+                    </tr>
+                    <tr className='row'>
+                        <td className='cell cell-name'>Nature</td>
+                        <td className='cell' style={{ backgroundColor: '#498553', color: '#d7eadd' }}>#498553</td>
+                        <td className='cell' style={{ backgroundColor: '#d7eadd', color: '#498553' }}>#d7eadd</td>
+                        <td className='cell'>
+                            <button onClick={() => dispatch(natureTheme())}
+                                className='apply-btn'
+                                style={{
+                                    backgroundColor: `${style.color}`,
+                                    color: `${style.backgroundColor}`,
+                                    border: `1px solid ${style.color}`
+                                }}>
+                                Apply
+                            </button>
+                        </td>
+                    </tr>
+                    <tr className='row'>
+                        <td className='cell cell-name'>Ocean</td>
+                        <td className='cell' style={{ backgroundColor: '#1b65a7', color: '#f2f4f5' }}>#1b65a7</td>
+                        <td className='cell' style={{ backgroundColor: '#f2f4f5', color: '#1b65a7' }}>#f2f4f5</td>
+                        <td className='cell'>
+                            <button onClick={() => dispatch(oceanTheme())}
                                 className='apply-btn'
                                 style={{
                                     backgroundColor: `${style.color}`,

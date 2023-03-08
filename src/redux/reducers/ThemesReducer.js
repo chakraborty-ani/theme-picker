@@ -16,6 +16,18 @@ const ThemeChangeReducer = (state = initialState, action) => {
             ...action.payload
         }
     }
+    else if (action.type === 'NATURE') {
+        return {
+            ...state,
+            ...action.payload
+        }
+    }
+    else if (action.type === 'OCEAN') {
+        return {
+            ...state,
+            ...action.payload
+        }
+    }
     else if (action.type === 'OTHER') {
         return {
             ...state,

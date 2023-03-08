@@ -1,6 +1,6 @@
 const initialState = {
     color: '#000',
-    backgroundColor: "#fff"
+    backgroundColor: "#f5f5fa"
 }
 
 const ThemeChangeReducer = (state = initialState, action) => {

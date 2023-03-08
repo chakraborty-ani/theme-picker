@@ -83,11 +83,11 @@ const Home = () => {
     const handleSecondaryColorChange = (color) => {
         dispatch(setSecondaryColor(color));
     }
-
+    // border: `1px solid ${style.color}`
     return (
         <div className='container' style={style}>
             <motion.div className='form-box'
-                style={{ ...style, border: `1px solid ${style.color}` }}
+                style={{ ...style }}
                 variants={containerVariants}
                 initial="start"
                 animate="end">

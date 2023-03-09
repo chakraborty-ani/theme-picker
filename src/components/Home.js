@@ -39,7 +39,16 @@ const canvasVariants = {
     }
 }
 
-const buttonVariants = {
+const submitBtnVariants = {
+    hover: {
+        scale: 1.05,
+        transition: {
+            duration: 0.4
+        }
+    }
+}
+
+const btnVariants = {
     hover: {
         scale: 1.05,
         transition: {
@@ -155,16 +164,18 @@ const Home = () => {
                                 onChange={formik.handleChange}
                                 style={{ border: `1px solid ${style.color}` }}
                             />
-                            <button className='choose-btn'
+                            <motion.button className='choose-btn'
                                 type="button"
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
                                 }}
+                                variants={btnVariants}
+                                whileHover='hover'
                                 onClick={handlePrimaryPaletteOpen}>
                                 {!primaryPaletteOpen ? `Open Palette` : `Close Palette`}
-                            </button>
+                            </motion.button>
                         </div>
                         {formik.errors.primaryHexCode && formik.touched.primaryHexCode ? (
                             <div className='error-div'>{formik.errors.primaryHexCode}</div>
@@ -187,16 +198,18 @@ const Home = () => {
                                 onChange={formik.handleChange}
                                 style={{ border: `1px solid ${style.color}` }}
                             />
-                            <button className='choose-btn'
+                            <motion.button className='choose-btn'
                                 type="button"
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
                                 }}
+                                variants={btnVariants}
+                                whileHover='hover'
                                 onClick={handleSecondaryPaletteOpen}>
                                 {!secondaryPaletteOpen ? `Open Palette` : `Close Palette`}
-                            </button>
+                            </motion.button>
                         </div>
                         {formik.errors.secondaryHexCode && formik.touched.secondaryHexCode ? (
                             <div className='error-div'>{formik.errors.secondaryHexCode}</div>
@@ -215,7 +228,7 @@ const Home = () => {
                                 color: `${style.backgroundColor}`,
                                 border: `1px solid ${style.color}`
                             }}
-                            variants={buttonVariants}
+                            variants={submitBtnVariants}
                             whileHover="hover">
                             Submit
                         </motion.button>

@@ -1,7 +1,7 @@
 export const DARK = "DARK";
 export const LIGHT = "LIGHT";
 export const NATURE = "NATURE";
-export const OCEAN = "OCEAN";
+export const ROYALE = "ROYALE";
 export const OTHER = "OTHER";
 
 export const darkTheme = () => {
@@ -34,12 +34,12 @@ export const natureTheme = () => {
     }
 }
 
-export const oceanTheme = () => {
+export const royaleTheme = () => {
     return {
-        type: OCEAN,
+        type: ROYALE,
         payload: {
-            color: '#f2f4f5',
-            backgroundColor: "#1b65a7"
+            color: '#f5a623',
+            backgroundColor: "#052b52"
         }
     }
 }

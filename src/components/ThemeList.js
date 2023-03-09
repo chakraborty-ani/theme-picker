@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { darkTheme, lightTheme, otherTheme, natureTheme, oceanTheme } from '../redux/actions/ThemesAction';
+import { darkTheme, lightTheme, otherTheme, natureTheme, royaleTheme } from '../redux/actions/ThemesAction';
 import { motion } from 'framer-motion';
 import '../styles/ThemeList.css';
 import SphereCanvas from './SphereCanvas';
@@ -33,6 +33,16 @@ const canvasVariants = {
     }
 }
 
+const btnVariants = {
+    hover: {
+        // fontWeight: 600
+        scale: 1.05,
+        transition: {
+            duration: 0.4
+        }
+    }
+}
+
 const ThemeList = () => {
 
     const dispatch = useDispatch();
@@ -60,15 +70,17 @@ const ThemeList = () => {
                         <td className='cell' style={{ backgroundColor: '#f5f5fa', color: '#1b65a7' }}>#f5f5fa</td>
                         <td className='cell' style={{ backgroundColor: '#1b65a7', color: '#f5f5fa' }}>#1b65a7</td>
                         <td className='cell'>
-                            <button onClick={() => dispatch(lightTheme())}
+                            <motion.button onClick={() => dispatch(lightTheme())}
                                 className='apply-btn'
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
-                                }}>
+                                }}
+                                variants={btnVariants}
+                                whileHover='hover'>
                                 Apply
-                            </button>
+                            </motion.button>
                         </td>
                     </tr>
                     <tr className='row'>
@@ -76,15 +88,17 @@ const ThemeList = () => {
                         <td className='cell' style={{ backgroundColor: '#1f1717', color: '#f5f5fa' }}>#1f1717</td>
                         <td className='cell' style={{ backgroundColor: '#f5f5fa', color: '#1f1717' }}>#f5f5fa</td>
                         <td className='cell'>
-                            <button onClick={() => dispatch(darkTheme())}
+                            <motion.button onClick={() => dispatch(darkTheme())}
                                 className='apply-btn'
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
-                                }}>
+                                }}
+                                variants={btnVariants}
+                                whileHover='hover'>
                                 Apply
-                            </button>
+                            </motion.button>
                         </td>
                     </tr>
                     <tr className='row'>
@@ -92,31 +106,35 @@ const ThemeList = () => {
                         <td className='cell' style={{ backgroundColor: '#498553', color: '#d7eadd' }}>#498553</td>
                         <td className='cell' style={{ backgroundColor: '#d7eadd', color: '#498553' }}>#d7eadd</td>
                         <td className='cell'>
-                            <button onClick={() => dispatch(natureTheme())}
+                            <motion.button onClick={() => dispatch(natureTheme())}
                                 className='apply-btn'
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
-                                }}>
+                                }}
+                                variants={btnVariants}
+                                whileHover='hover'>
                                 Apply
-                            </button>
+                            </motion.button>
                         </td>
                     </tr>
                     <tr className='row'>
-                        <td className='cell cell-name'>Ocean</td>
-                        <td className='cell' style={{ backgroundColor: '#1b65a7', color: '#f2f4f5' }}>#1b65a7</td>
-                        <td className='cell' style={{ backgroundColor: '#f2f4f5', color: '#1b65a7' }}>#f2f4f5</td>
+                        <td className='cell cell-name'>Royale</td>
+                        <td className='cell' style={{ backgroundColor: '#052b52', color: '#f5a623' }}>#052b52</td>
+                        <td className='cell' style={{ backgroundColor: '#f5a623', color: '#052b52' }}>#f5a623</td>
                         <td className='cell'>
-                            <button onClick={() => dispatch(oceanTheme())}
+                            <motion.button onClick={() => dispatch(royaleTheme())}
                                 className='apply-btn'
                                 style={{
                                     backgroundColor: `${style.color}`,
                                     color: `${style.backgroundColor}`,
                                     border: `1px solid ${style.color}`
-                                }}>
+                                }}
+                                variants={btnVariants}
+                                whileHover='hover'>
                                 Apply
-                            </button>
+                            </motion.button>
                         </td>
                     </tr>
                     {themes.map((theme, id) => {
@@ -126,15 +144,17 @@ const ThemeList = () => {
                                 <td className='cell' style={{ backgroundColor: theme.backgroundColor, color: theme.color }}>{theme.backgroundColor}</td>
                                 <td className='cell' style={{ backgroundColor: theme.color, color: theme.backgroundColor }}>{theme.color}</td>
                                 <td className='cell'>
-                                    <button onClick={() => dispatch(otherTheme(id))}
+                                    <motion.button onClick={() => dispatch(otherTheme(id))}
                                         className='apply-btn'
                                         style={{
                                             backgroundColor: `${style.color}`,
                                             color: `${style.backgroundColor}`,
                                             border: `1px solid ${style.color}`
-                                        }}>
+                                        }}
+                                        variants={btnVariants}
+                                        whileHover='hover'>
                                         Apply
-                                    </button>
+                                    </motion.button>
                                 </td>
                             </tr>
                         )

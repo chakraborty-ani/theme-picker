@@ -22,7 +22,7 @@ const ThemeChangeReducer = (state = initialState, action) => {
             ...action.payload
         }
     }
-    else if (action.type === 'OCEAN') {
+    else if (action.type === 'ROYALE') {
         return {
             ...state,
             ...action.payload

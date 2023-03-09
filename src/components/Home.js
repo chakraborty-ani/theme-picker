@@ -17,6 +17,10 @@ const containerVariants = {
     end: {
         opacity: 1,
         transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
+    },
+    exit: {
+        opacity: 0,
+        transition: { ease: 'easeInOut', duration: 1 }
     }
 }
 
@@ -100,7 +104,8 @@ const Home = () => {
                 style={{ ...style }}
                 variants={containerVariants}
                 initial="start"
-                animate="end">
+                animate="end"
+                exit="exit">
                 <h2 id='form-heading'>Enter theme details</h2>
                 <form onSubmit={formik.handleSubmit}>
                     <div>

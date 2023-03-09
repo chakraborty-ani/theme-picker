@@ -11,6 +11,10 @@ const containerVariants = {
     end: {
         opacity: 1,
         transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
+    },
+    exit: {
+        opacity: 0,
+        transition: { ease: 'easeInOut', duration: 1 }
     }
 }
 
@@ -25,7 +29,8 @@ const ThemeList = () => {
             <motion.table className='table'
                 variants={containerVariants}
                 initial="start"
-                animate="end">
+                animate="end"
+                exit="exit">
                 <thead >
                     <tr className='row'>
                         <th className='cell cell-head cell-name'>Name</th>

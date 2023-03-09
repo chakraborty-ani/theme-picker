@@ -7,6 +7,7 @@ import { store } from './redux/Store';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+localStorage.setItem("customThemes", JSON.stringify([]));
 root.render(
   <React.StrictMode>
     <BrowserRouter>

@@ -1,11 +1,11 @@
 #table-container {
     min-height: 100vh;
-    padding-top: 5rem;
 }
 
 .table {
-    margin: auto;
-    width: 75%;
+    margin: auto 0;
+    margin-top: 3rem;
+    width: 60%;
     padding: 10px 10px;
     text-align: center;
     border-collapse: separate;
@@ -38,12 +38,13 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
     #table-container {
         padding-top: 3rem;
     }
 
     .table {
+        margin: auto;
         width: 92%;
         padding: 5px 5px;
         font-size: 0.65rem;

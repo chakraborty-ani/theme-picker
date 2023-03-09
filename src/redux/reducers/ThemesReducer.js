@@ -1,5 +1,5 @@
 const initialState = {
-    color: '#1f1717',
+    color: '#1b65a7',
     backgroundColor: "#f5f5fa"
 }
 

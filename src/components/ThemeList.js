@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { darkTheme, lightTheme, otherTheme, natureTheme, oceanTheme } from '../redux/actions/ThemesAction';
 import { motion } from 'framer-motion';
 import '../styles/ThemeList.css';
+import SphereCanvas from './SphereCanvas';
 
 const containerVariants = {
     start: {
@@ -10,11 +11,25 @@ const containerVariants = {
     },
     end: {
         opacity: 1,
-        transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
+        transition: { ease: 'easeInOut', duration: 2 }
     },
     exit: {
         opacity: 0,
-        transition: { ease: 'easeInOut', duration: 1 }
+        transition: { ease: 'easeInOut', duration: 0.5 }
+    }
+}
+
+const canvasVariants = {
+    start: {
+        y: '-1000px'
+    },
+    end: {
+        y: 0,
+        transition: { delay: 0.2, type: 'spring', stiffness: 200 }
+    },
+    exit: {
+        y: '-1000px',
+        transition: { ease: 'easeInOut' }
     }
 }
 
@@ -42,8 +57,8 @@ const ThemeList = () => {
                 <tbody>
                     <tr className='row'>
                         <td className='cell cell-name'>Light</td>
-                        <td className='cell' style={{ backgroundColor: '#f5f5fa', color: '#1f1717' }}>#f5f5fa</td>
-                        <td className='cell' style={{ backgroundColor: '#1f1717', color: '#f5f5fa' }}>#1f1717</td>
+                        <td className='cell' style={{ backgroundColor: '#f5f5fa', color: '#1b65a7' }}>#f5f5fa</td>
+                        <td className='cell' style={{ backgroundColor: '#1b65a7', color: '#f5f5fa' }}>#1b65a7</td>
                         <td className='cell'>
                             <button onClick={() => dispatch(lightTheme())}
                                 className='apply-btn'
@@ -126,6 +141,15 @@ const ThemeList = () => {
                     })}
                 </tbody>
             </motion.table>
+            <div className='canvas-container'>
+                <motion.div
+                    variants={canvasVariants}
+                    initial="start"
+                    animate="end"
+                    exit="exit">
+                    <SphereCanvas />
+                </motion.div>
+            </div>
         </div>
     )
 }

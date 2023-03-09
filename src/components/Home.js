@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { otherTheme } from '../redux/actions/ThemesAction';
 import { setPrimaryColor, setSecondaryColor, setThemeName, setdefault } from '../redux/actions/ColorsAction';
 import { addTheme } from '../redux/actions/ThemesListAction';
+import SphereCanvas from './SphereCanvas';
 import '../styles/Home.css';
 
 const containerVariants = {
@@ -16,11 +17,25 @@ const containerVariants = {
     },
     end: {
         opacity: 1,
-        transition: { ease: 'easeInOut', duration: 2, delay: 0.5 }
+        transition: { ease: 'easeInOut', duration: 2 }
     },
     exit: {
         opacity: 0,
-        transition: { ease: 'easeInOut', duration: 1 }
+        transition: { ease: 'easeInOut', duration: 0.5 }
+    }
+}
+
+const canvasVariants = {
+    start: {
+        y: '-100vh'
+    },
+    end: {
+        y: 0,
+        transition: { delay: 0.2, type: 'spring', stiffness: 200 }
+    },
+    exit: {
+        y: '-100vh',
+        transition: { ease: 'easeInOut' }
     }
 }
 
@@ -100,6 +115,15 @@ const Home = () => {
 
     return (
         <div className='container' style={style}>
+            <div className='canvas-container'>
+                <motion.div
+                    variants={canvasVariants}
+                    initial="start"
+                    animate="end"
+                    exit="exit">
+                    <SphereCanvas />
+                </motion.div>
+            </div>
             <motion.div className='form-box'
                 style={{ ...style }}
                 variants={containerVariants}

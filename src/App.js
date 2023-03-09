@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import Home from "./components/Home";
 import ThemeList from './components/ThemeList';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/theme-list' element={<ThemeList />} />
         </Routes>
       </AnimatePresence>
+      <Footer />
     </>
   );
 }
